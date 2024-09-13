@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+import "map_renderer.proto";
+import "transport_router.proto";
+
+package catalogue_serialize;
+
+message BusInfo {
+  uint32 stops_count = 1;
+  uint32 unique_stops = 2;
+  double route_actual = 3;
+  double route_geographic = 4;
+  double curvature = 5;
+}
+
+message Bus {
+  string name = 1;
+  BusInfo bus_info = 2;
+  repeated Stop stop = 3;
+  bool is_roundtrip = 4;
+}
+
+message Distance {
+  string stop_name_to = 1;
+  uint64 distance = 2;
+}
+
+message Coordinates {
+  double lat = 1;
+  double lng = 2;
+}
+
+message Stop {
+  string name = 1;
+  Coordinates coordinates = 2;
+  repeated Distance distance = 3;
+  repeated Bus bus = 4;
+}
+
+message StopsList {
+  repeated Stop stop = 1;
+}
+message BusesList {
+  repeated Bus bus = 1;
+}
+
+message Lists {
+  StopsList stop_list = 1;
+  BusesList bus_list = 2;
+  render_serialize.RenderSettings render_settings = 3;
+  router_serialize.EdgesMap edges_map = 4;
+  router_serialize.RoutingSettings routing_settings = 5;
+}

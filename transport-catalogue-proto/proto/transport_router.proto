@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+import "graph.proto";
+
+package router_serialize;
+
+message Edge {
+  uint32 edge_id = 1;
+  graph_serialize.EdgeInfo edge_info = 2;
+}
+
+message EdgesMap {
+  repeated Edge edge = 1;
+  uint32 vetrex_count = 2;
+}
+
+message RoutingSettings {
+  uint32 bus_wait_time = 1;
+  uint32 bus_velocity = 2;
+}

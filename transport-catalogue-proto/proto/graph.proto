@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package graph_serialize;
+
+message EdgeInfo {
+  string from = 1;
+  string to = 2;
+  string bus_name = 3;
+  double time = 4;
+  uint32 span_count = 5;
+  double weight = 6;
+  uint32 vertex_id_from = 7;
+  uint32 vertex_id_to = 8;
+}
